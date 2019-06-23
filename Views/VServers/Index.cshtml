@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ManageVirtualServers.DAL.VirtualServer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VirtualServerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RemoveDateTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.VirtualServerId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreateDateTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RemoveDateTime)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.VirtualServerId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.VirtualServerId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.VirtualServerId })
+    </td>
+</tr>
+}
+
+</table>

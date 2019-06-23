@@ -1,0 +1,42 @@
+﻿@model ManageVirtualServers.DAL.VirtualServer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VirtualServer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VirtualServerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VirtualServerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RemoveDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RemoveDateTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VirtualServerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

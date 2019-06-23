@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ManageVirtualServers.DAL.VirtualServer>
+
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>Manage</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <table class="table">
+        <tr>
+            <td>CurrentDateTime:</td>
+            <td>@(ViewBag.CTime)</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>@Html.ActionLink("Create New", "Create")</td>
+        </tr>
+        <tr>
+            <td>TotalUsageTime:</td>
+            <td>@(ViewBag.TUTime)</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Delete selected" class="btn btn-default" />
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VirtualServerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RemoveDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckedServer)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VirtualServerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RemoveDateTime)
+                </td>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.CheckBoxFor(model => item.CheckedServer.Value, new { @checked = "checked", @class = "form-control", id = $"cb{item.VirtualServerId}", name = "cbfordel", value = $"{item.VirtualServerId}" })
+                            @Html.ValidationMessageFor(modelItem => item.CheckedServer, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.VirtualServerId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.VirtualServerId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.VirtualServerId })
+                </td>
+            </tr>
+        }
+    </table>
+
+}
